@@ -52,6 +52,17 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
+                                    <label for="serviceicon" class="form-label fw-semibold">Service Icon  | <a
+                                            href="https://mobiriseicons.com/cheatsheet.html" target="-_blank">Cheatsheet Icon</a>| <a
+                                            href="https://themesbrand.com/admiria/layouts/icons-mobirise.html" target="-_blank">Cheatsheet Icon v2</a></label>
+                                    <input type="text" name="icon" class="form-control" placeholder="mbri-hot-cup" value="{{ old('icon') }}">
+                                    @error('icon')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-4">
                                     <label for="description" class="form-label fw-semibold">Description</label>
                                     <textarea name="description" id="description" cols="10" rows="5" class="form-control" placeholder="Write a short Description">{{ old('description') }}</textarea>
                                     @error('description')

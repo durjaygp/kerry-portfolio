@@ -64,73 +64,26 @@
                     <!-- =================== -->
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">E-commerce</span>
+                            <span class="hide-menu">Portfolio</span>
                         </li>
                     <!-- =================== -->
                     <!-- Books -->
                     <!-- =================== -->
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-product-category.index')}}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{route('home-page-setting')}}" aria-expanded="false">
                   <span>
-                    <i class="ti ti-category-2"></i>
+                    <i class="ti ti-home-check"></i>
                   </span>
-                            <span class="hide-menu">Product Category</span>
+                            <span class="hide-menu">Home Page Setting</span>
                         </a>
                     </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-products.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-brand-producthunt"></i>
-                  </span>
-                            <span class="hide-menu">Products</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-coupons.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-discount"></i>
-                  </span>
-                            <span class="hide-menu">Coupons</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-order.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-shopping-cart"></i>
-                  </span>
-                            <span class="hide-menu">Orders</span>
-                        </a>
-                    </li>
-
-
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('admin-service.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-world-code"></i>
                   </span>
                             <span class="hide-menu">Services</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-faq.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-bell-question"></i>
-                  </span>
-                            <span class="hide-menu">FAQ</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-slider.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-slideshow"></i>
-                  </span>
-                            <span class="hide-menu">Slider</span>
                         </a>
                     </li>
 
@@ -144,35 +97,99 @@
                     </li>
 
 
+
+                    {{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('admin-product-category.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-category-2"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">Product Category</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('admin-products.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-brand-producthunt"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">Products</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('admin-coupons.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-discount"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">Coupons</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('admin-order.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-shopping-cart"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">Orders</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+
+
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('home-page-setting')}}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{route('admin-faq.index')}}" aria-expanded="false">
                   <span>
-                    <i class="ti ti-home-check"></i>
+                    <i class="ti ti-bell-question"></i>
                   </span>
-                            <span class="hide-menu">Home Page Setting</span>
+                            <span class="hide-menu">FAQ</span>
                         </a>
                     </li>
 
-
-                <!-- =================== -->
-                    <!-- Support Intro -->
-                    <!-- =================== -->
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Support System</span>
+                    @can('page-list')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{route('new-page.index')}}">
+                      <span>
+                        <i class="ti ti-new-section"></i>
+                      </span>
+                                <span class="hide-menu">Pages</span>
+                            </a>
                         </li>
-                    <!-- =================== -->
-                    <!-- Support -->
-                    <!-- =================== -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-support-list')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-message-chatbot"></i>
-                  </span>
-                            <span class="hide-menu">Support</span>
-                        </a>
-                    </li>
-                    <!-- =================== -->
+                    @endcan
+
+
+                    @can('social-list')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{route('update-socials-links')}}">
+                          <span>
+                            <i class="ti ti-brand-facebook"></i>
+                          </span>
+                                <span class="hide-menu">Update Socials Link</span>
+                            </a>
+                        </li>
+                    @endcan
+
+
+
+
+{{--                <!-- =================== -->--}}
+{{--                    <!-- Support Intro -->--}}
+{{--                    <!-- =================== -->--}}
+{{--                        <li class="nav-small-cap">--}}
+{{--                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>--}}
+{{--                            <span class="hide-menu">Support System</span>--}}
+{{--                        </li>--}}
+{{--                    <!-- =================== -->--}}
+{{--                    <!-- Support -->--}}
+{{--                    <!-- =================== -->--}}
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('admin-support-list')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-message-chatbot"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">Support</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <!-- =================== -->--}}
 
                 <!-- =================== -->
                     <!-- Recipe Intro -->
@@ -215,16 +232,6 @@
 {{--                            <span class="hide-menu">Affiliate Product</span>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-                    @can('page-list')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('new-page.index')}}">
-                      <span>
-                        <i class="ti ti-new-section"></i>
-                      </span>
-                                <span class="hide-menu">Pages</span>
-                            </a>
-                        </li>
-                    @endcan
 
 
 {{--                    <li class="sidebar-item">--}}
@@ -245,16 +252,6 @@
 {{--                        </a>--}}
 {{--                    </li>--}}
 
-                    @can('social-list')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('update-socials-links')}}">
-                          <span>
-                            <i class="ti ti-brand-facebook"></i>
-                          </span>
-                                <span class="hide-menu">Update Socials Link</span>
-                            </a>
-                        </li>
-                    @endcan
 
                     <!-- =================== -->
                     <li class="nav-small-cap">

@@ -57,12 +57,20 @@ class HomepageSettingController extends Controller
 
         $setting = HomepageSetting::find(1);
         $data = $request->all();
+        if ($request->has('hero_section_all_designation_title')) {
+            $data['hero_section_all_designation_title'] = json_encode(array_map('trim', explode(',', $request->hero_section_all_designation_title)));
+        }
+
         if ($request->file('hero_section_image')) {
             $data["hero_section_image"] = $this->saveImage($request);
         }
 
         if ($request->file('about_section_image')) {
             $data["about_section_image"] = $this->saveAnotherImage($request);
+        }
+
+        if ($request->file('hero_section_background_image')) {
+            $data["hero_section_background_image"] = $this->hero_section_background_image($request);
         }
 
         $setting->update($data);
@@ -73,6 +81,15 @@ class HomepageSettingController extends Controller
     public function saveImage($request)
     {
         $this->image = $request->file('hero_section_image');
+        $this->imageName = rand().'.'.$this->image->getClientOriginalExtension();
+        $this->directory = 'uploads/';
+        $this->imageUrl = $this->directory . $this->imageName;
+        $this->image->move($this->directory, $this->imageName);
+        return $this->imageUrl;
+    }
+    public function hero_section_background_image($request)
+    {
+        $this->image = $request->file('hero_section_background_image');
         $this->imageName = rand().'.'.$this->image->getClientOriginalExtension();
         $this->directory = 'uploads/';
         $this->imageUrl = $this->directory . $this->imageName;

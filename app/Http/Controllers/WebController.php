@@ -24,15 +24,15 @@ use Illuminate\Http\Response; // Import the Response class
 class WebController extends Controller
 {
     public function index(){
-        $latestBlogs = Blog::select('id', 'name','slug','description','image', 'created_at')->latest()->whereStatus(1)->take(3)->get();
-      //  $sliders = Slider::select('id','title','description', 'image', 'upper_subtitle')->latest()->whereStatus(1)->get();
-        $services = Service::select('id', 'title', 'slug','description','image')->latest()->whereStatus(1)->take(3)->get();
+        $latestBlogs = Blog::with('user')->select('id', 'name','slug','description','image', 'created_at','user_id')->latest()->whereStatus(1)->take(3)->get();
+        $services = Service::select('id', 'title', 'icon', 'slug','description')->latest()->whereStatus(1)->get();
         $about = About::find(1);
         $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
         $homepage = HomepageSetting::find(1);
         $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
+        $setting = setting();
 
-        return view('website.master',compact('faqs','latestBlogs','services','about','reviews','homepage'));
+        return view('website.home.index',data: compact('faqs','latestBlogs','services','about','reviews','homepage','setting'));
     }
 
 //    public function index()

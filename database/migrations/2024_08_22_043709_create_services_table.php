@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->string('icon')->nullable();
             $table->string('slug');
             $table->text('image')->nullable();
             $table->longText('main_content')->nullable();

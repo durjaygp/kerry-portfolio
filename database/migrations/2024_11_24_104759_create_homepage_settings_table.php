@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('hero_section_image')->nullable();
             $table->text('hero_section_button_link')->nullable();
             $table->text('hero_section_button_text')->nullable();
+            $table->text('hero_section_background_image')->nullable();
+            $table->text('hero_section_all_designation_title')->nullable();
             // About Section
             $table->string('about_section_title')->nullable();
             $table->text('about_section_header')->nullable();
@@ -49,6 +51,7 @@ return new class extends Migration
             // Blog Section
             $table->text('blog_section_title')->nullable();
             $table->text('blog_section_header')->nullable();
+            $table->text('blog_section_paragraph')->nullable();
             $table->text('blog_section_link')->nullable();
             $table->string('blog_section_status')->nullable();
 

@@ -48,6 +48,7 @@
                                         <th>#</th>
                                         <th width="200px">Image</th>
                                         <th>Service Title</th>
+                                        <th>Service Icon</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -61,6 +62,9 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td><img src="{{asset($row->image)}}" alt="" class="img-fluid w-50"></td>
                                         <td>{{$row->title}}</td>
+                                        <td><i class="{{$row->icon}}" style="font-size: 20px;"></i>
+                                            <br>
+                                            {{$row->icon}}</td>
                                         <td>{{\Illuminate\Support\Str::limit($row->description,20)}}</td>
                                         <td>
                                             @if($row->status == 1)
@@ -103,4 +107,8 @@
 
         </div>
     </div>
+@endsection
+@section('style')
+    <!-- Mobirise icons Css -->
+    <link rel="stylesheet" type="text/css"  href="{{ asset('assets/css/mobiriseicons.css') }}">
 @endsection
