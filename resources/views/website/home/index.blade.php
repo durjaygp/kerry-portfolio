@@ -55,12 +55,43 @@
 
                             <div>
                                 <ul class="mt-4 mb-0 about-social list-inline">
-                                    <li class="list-inline-item"><a href="javascript:void(0)"><i class="mdi mdi-dribbble"></i></a></li>
-                                    <li class="list-inline-item"><a href="javascript:void(0)"><i class="mdi mdi-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a href="javascript:void(0)"><i class="mdi mdi-linkedin"></i></a></li>
-                                    <li class="list-inline-item"><a href="javascript:void(0)"><i class="mdi mdi-twitter"></i></a></li>
+                                    @php
+                                        $socialPlatforms = [
+                                            'facebook' => 'mdi mdi-facebook',
+                                            'whatsapp' => 'mdi mdi-whatsapp',
+                                            'youtube' => 'mdi mdi-youtube-play',
+                                            'instagram' => 'mdi mdi-instagram',
+                                            'tiktok' => asset('tiktok.png'), // Store full image path
+                                            'telegram' => 'mdi mdi-telegram',
+                                            'snapchat' => 'mdi mdi-snapchat',
+                                            'twitter' => 'mdi mdi-twitter',
+                                            'pinterest' => 'mdi mdi-pinterest'
+                                        ];
+                                    @endphp
+
+                                    @foreach ($socialPlatforms as $platform => $icon)
+                                        <li class="list-inline-item">
+                                            @if (!empty($social->$platform))
+                                                <a href="{{ $social->$platform }}" target="_blank">
+                                                    @if ($platform === 'tiktok')
+                                                        <img src="{{ $icon }}" alt="TikTok" style="width: 24px; height: 24px;">
+                                                    @else
+                                                        <i class="{{ $icon }}"></i>
+                                                    @endif
+                                                </a>
+                                            @else
+                                                @if ($platform === 'tiktok')
+                                                    <img src="{{ $icon }}" alt="TikTok" style="width: 24px; height: 24px;">
+                                                @else
+                                                    <i class="{{ $icon }}"></i>
+                                                @endif
+                                            @endif
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -104,23 +135,25 @@
         </section>
         <!-- END SERVICES -->
     @endif
-
+    @if($homepage->hire_section_status == "1")
     <!-- START CTA -->
     <section class="section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
-                        <h2 class="fw-bold">I Am Available For Freelancer.</h2>
+                        <h2 class="fw-bold">{{$homepage->hire_section_title}}</h2>
+                        <p>{{$homepage->hire_section_paragraph}}</p>
                     </div>
                     <div class="mt-4 text-center">
-                        <a href="javascript:void(0)" class="btn btn-primary">Hire Me!</a>
+                        <a href="{{$homepage->hire_section_link}}" target="_blank" class="btn btn-primary">{{$homepage->hire_section_button_text}}</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- END CTA -->
+    @endif
 
     @if($homepage->review_section_status == "1")
         <!-- START CLIENT -->
@@ -174,100 +207,35 @@
             <div class="mt-5 row ">
                 <ul class="mb-0 col list-unstyled list-inline text-uppercase work_menu" id="menu-filter">
                     <li class="list-inline-item"><a class="active" data-filter="*">All</a></li>
-                    <li class="list-inline-item"><a class="" data-filter=".seo">Seo</a></li>
-                    <li class="list-inline-item"><a class="" data-filter=".webdesign">Webdesign</a></li>
-                    <li class="list-inline-item"><a class="" data-filter=".WORK">WORK</a></li>
-                    <li class="list-inline-item"><a class="" data-filter=".wordpress">Wordpress</a></li>
+                    @foreach($projectCategory as $category)
+                        <li class="list-inline-item">
+                            <a data-filter=".{{ Str::slug($category->name) }}">{{ $category->name }}</a>
+                        </li>
+                    @endforeach
                 </ul>
+
             </div>
         </div>
         <div class="container">
             <div class="mt-4 row work-filter">
-                <div class="col-lg-4 work_item webdesign wordpress">
-                    <a  href="{{ asset('assets') }}/images/works/1.jpg" class="img-zoom">
-                        <div class="work_box">
-                            <div class="work_img">
-                                <img  src="{{ asset('assets') }}/images/works/1.jpg" class="mx-auto rounded img-fluid d-block" alt="work-img">
+                @foreach($projects as $project)
+                    <div class="col-lg-4 work_item {{ Str::slug($project->productCategory->name) }}">
+                        <a href="{{ asset($project->image) }}" class="img-zoom">
+                            <div class="work_box">
+                                <div class="work_img">
+                                    <img src="{{ asset($project->image) }}" class="mx-auto rounded img-fluid d-block" alt="{{ $project->title }}">
+                                </div>
+                                <div class="work_detail">
+                                    <p class="mb-2">{{ $project->productCategory->name }}</p>
+                                    <h4 class="mb-0">{{ $project->name }}</h4>
+                                </div>
                             </div>
-                            <div class="work_detail">
-                                <p class="mb-2">Category</p>
-                                <h4 class="mb-0">Project Title</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 work_item WORK webdesign seo">
-                    <a  href="{{ asset('assets') }}/images/works/2.jpg" class="img-zoom">
-                        <div class="work_box">
-                            <div class="work_img">
-                                <img  src="{{ asset('assets') }}/images/works/2.jpg" class="mx-auto rounded img-fluid d-block" alt="work-img">
-                            </div>
-                            <div class="work_detail">
-                                <p class="mb-2">Category</p>
-                                <h4 class="mb-0">Project Title</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 work_item seo wordpress">
-                    <a  href="{{ asset('assets') }}/images/works/3.jpg" class="img-zoom">
-                        <div class="work_box">
-                            <div class="work_img">
-                                <img  src="{{ asset('assets') }}/images/works/3.jpg" class="mx-auto rounded img-fluid d-block" alt="work-img">
-                            </div>
-                            <div class="work_detail">
-                                <p class="mb-2">Category</p>
-                                <h4 class="mb-0">Project Title</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 work_item wordpress WORK webdesign">
-                    <a  href="{{ asset('assets') }}/images/works/4.jpg" class="img-zoom">
-                        <div class="work_box">
-                            <div class="work_img">
-                                <img  src="{{ asset('assets') }}/images/works/4.jpg" class="mx-auto rounded img-fluid d-block" alt="work-img">
-                            </div>
-                            <div class="work_detail">
-                                <p class="mb-2">Category</p>
-                                <h4 class="mb-0">Project Title</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 work_item seo webdesign">
-                    <a  href="{{ asset('assets') }}/images/works/5.jpg" class="img-zoom">
-                        <div class="work_box">
-                            <div class="work_img">
-                                <img  src="{{ asset('assets') }}/images/works/5.jpg" class="mx-auto rounded img-fluid d-block" alt="work-img">
-                            </div>
-                            <div class="work_detail">
-                                <p class="mb-2">Category</p>
-                                <h4 class="mb-0">Project Title</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 work_item devlopment webdesign">
-                    <a  href="{{ asset('assets') }}/images/works/6.jpg" class="img-zoom">
-                        <div class="work_box">
-                            <div class="work_img">
-                                <img  src="{{ asset('assets') }}/images/works/6.jpg" class="mx-auto rounded img-fluid d-block" alt="work-img">
-                            </div>
-                            <div class="work_detail">
-                                <p class="mb-2">Category</p>
-                                <h4 class="mb-0">Project Title</h4>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
+
     </section>
     <!-- END WORK -->
 
@@ -361,7 +329,8 @@
                     <div class="col-lg-12">
                         <div class="form-kerri contact_form">
                             <div id="message"></div>
-                            <form method="post" action="#" name="contact-form" id="working_form">
+                            <form method="post" action="{{route('contact.save')}}" name="contact-form">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mt-2 form-group">
@@ -376,15 +345,24 @@
                                 </div>
                                 <div class="row">
                                     <div class="mt-2 form-group">
-                                        <input type="text" class="form-control" id="subject" placeholder="Your Subject.." required />
+                                        <input type="text" name="subject" class="form-control" id="subject" placeholder="Your Subject.." required />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mt-2 form-group">
-                                            <textarea name="comments" id="comments" rows="4" class="form-control" placeholder="Your message..." required></textarea>
+                                            <textarea name="description" id="comments" rows="4" class="form-control" placeholder="Your message..." required></textarea>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mathgroup">Please solve the following math function: {{ app('mathcaptcha')->label() }}</label>
+                                    {!! app('mathcaptcha')->input(['class' => 'form-control', 'id' => 'mathgroup']) !!}
+                                    @if ($errors->has('mathcaptcha'))
+                                        <span class="help-block">
+            <strong>{{ $errors->first('mathcaptcha') }}</strong>
+        </span>
+                                    @endif
                                 </div>
                                 <div class="row">
                                     <div class="mt-2 col-lg-12 text-end">

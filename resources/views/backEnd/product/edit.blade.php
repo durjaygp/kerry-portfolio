@@ -43,22 +43,22 @@
                         @method('PUT')
 
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-8">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label fw-semibold">Product Name</label>
                                     <input type="text" name="name" class="form-control" id="product_name" placeholder="Product Name" value="{{ old('name', $product->name) }}" required>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="mb-4">
-                                    <label for="product_price" class="form-label fw-semibold">Product Price</label>
-                                    <input type="number" name="price" class="form-control" id="product_price" placeholder="Product Price" value="{{ old('price', $product->price) }}" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="mb-4">--}}
+{{--                                    <label for="product_price" class="form-label fw-semibold">Product Price</label>--}}
+{{--                                    <input type="number" name="price" class="form-control" id="product_price" placeholder="Product Price" value="{{ old('price', $product->price) }}" required>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label for="product_category" class="form-label fw-semibold">Product Category</label>
-                                    <select name="product_category_id" id="product_category" class="form-control" required>
+                                    <select name="product_category_id" id="product_category" class="form-select" required>
                                         <option>Select Category</option>
                                         @foreach($categories as $row)
                                             <option value="{{ $row->id }}" {{ $product->product_category_id == $row->id ? 'selected' : '' }}>{{ $row->name }}</option>

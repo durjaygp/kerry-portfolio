@@ -47,8 +47,7 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email',
-            'service' => 'required',
-            'phone' => 'required',
+            'subject' => 'required',
             'description' => 'required|max:500',
             'honeypot' => 'nullable',
             'mathcaptcha' => 'required|mathcaptcha',
@@ -72,7 +71,7 @@ class HomeController extends Controller
         }
 
         // Explicitly select the fields to prevent mass assignment issues
-        $messageData = $request->only(['name', 'email', 'service', 'phone', 'description']);
+        $messageData = $request->only(['name', 'email', 'subject', 'description']);
 
         // Create the contact message
         Contact::create($messageData);

@@ -47,9 +47,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Service</th>
+                                        <th>Subject</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
+
                                         <th>Description</th>
                                         <th>Action</th>
                                     </tr>
@@ -61,25 +61,36 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$row->name}}</td>
-                                            <td>{{$row->service}}</td>
+                                            <td>{{$row->subject}}</td>
                                             <td>{{$row->email}}</td>
-                                            <td>{{$row->phone}}</td>
                                             <td>{{ Str::limit($row->description, 50, '...')  }}</td>
                                             <td>
                                                 <div class="action-btn">
-                                                    <a href="" class="btn btn-primary"><i class="ti ti-eye fs-5"></i></a>
+                                                    <a href="#"
+                                                       class="btn btn-primary view-message"
+                                                       data-bs-toggle="modal"
+                                                       data-bs-target="#viewMessageModal"
+                                                       data-name="{{ $row->name }}"
+                                                       data-email="{{ $row->email }}"
+                                                       data-subject="{{ $row->subject }}"
+                                                       data-description="{{ $row->description }}">
+                                                        <i class="ti ti-eye fs-5"></i>
+                                                    </a>
+
                                                     <a href="#"
                                                        onclick="event.preventDefault();
-                                                           if (confirm('Are you sure you want to delete?'))
-                                                           document.getElementById('delete-form-{{ $row->id }}').submit();"
+               if (confirm('Are you sure you want to delete?'))
+               document.getElementById('delete-form-{{ $row->id }}').submit();"
                                                        class="btn btn-danger text-white delete ms-2">
                                                         <i class="ti ti-trash fs-5"></i>
                                                     </a>
+
                                                     <form id="delete-form-{{ $row->id }}" action="{{ route('contact.message.delete', $row->id) }}" method="get" style="display: none;">
                                                         @csrf
                                                     </form>
                                                 </div>
                                             </td>
+
                                         </tr>
                                         <!-- end row -->
                                     @endforeach
@@ -137,4 +148,40 @@
     </div>
 </div>
 <!-- Button trigger modal -->
+    <!-- View Message Modal -->
+    <div class="modal fade" id="viewMessageModal" tabindex="-1" aria-labelledby="viewMessageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewMessageModalLabel">Message Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Name:</strong> <span id="modal-name"></span></p>
+                    <p><strong>Email:</strong> <span id="modal-email"></span></p>
+{{--                    <p><strong>Phone:</strong> <span id="modal-phone"></span></p>--}}
+                    <p><strong>Subject:</strong> <span id="modal-subject"></span></p>
+                    <p><strong>Description:</strong></p>
+                    <p id="modal-description"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".view-message").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    document.getElementById("modal-name").innerText = this.getAttribute("data-name");
+                    document.getElementById("modal-email").innerText = this.getAttribute("data-email");
+                   // document.getElementById("modal-phone").innerText = this.getAttribute("data-phone");
+                    document.getElementById("modal-subject").innerText = this.getAttribute("data-subject");
+                    document.getElementById("modal-description").innerText = this.getAttribute("data-description");
+                });
+            });
+        });
+    </script>
+
 @endsection

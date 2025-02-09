@@ -11,9 +11,12 @@ use App\Models\Faq;
 use App\Models\HomepageSetting;
 use App\Models\NewPages;
 use App\Models\Page;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Slider;
+use App\Models\SocialMediaLinks;
 use Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -24,15 +27,19 @@ use Illuminate\Http\Response; // Import the Response class
 class WebController extends Controller
 {
     public function index(){
+        app('mathcaptcha')->reset();
+
         $latestBlogs = Blog::with('user')->select('id', 'name','slug','description','image', 'created_at','user_id')->latest()->whereStatus(1)->take(3)->get();
         $services = Service::select('id', 'title', 'icon', 'slug','description')->latest()->whereStatus(1)->get();
         $about = About::find(1);
         $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
         $homepage = HomepageSetting::find(1);
+        $social = SocialMediaLinks::find(1);
         $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
         $setting = setting();
-
-        return view('website.home.index',data: compact('faqs','latestBlogs','services','about','reviews','homepage','setting'));
+        $projectCategory = ProductCategory::latest()->whereStatus(1)->get();
+        $projects = Product::with('productCategory')->select('id', 'name','slug','image','product_category_id')->latest()->whereStatus(1)->get();
+        return view('website.home.index',data: compact('projects','projectCategory','social','faqs','latestBlogs','services','about','reviews','homepage','setting'));
     }
 
 //    public function index()

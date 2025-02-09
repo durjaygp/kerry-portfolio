@@ -67,6 +67,8 @@ return new class extends Migration
             $table->text('contact_section_link')->nullable();
             $table->string('contact_section_status')->nullable();
 
+
+
             $table->timestamps();
         });
     }

@@ -81,23 +81,23 @@
 
 
 
-                    {{--                    <li class="sidebar-item">--}}
-{{--                        <a class="sidebar-link" href="{{route('admin-product-category.index')}}" aria-expanded="false">--}}
-{{--                  <span>--}}
-{{--                    <i class="ti ti-category-2"></i>--}}
-{{--                  </span>--}}
-{{--                            <span class="hide-menu">Product Category</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-product-category.index')}}" aria-expanded="false">
+                      <span>
+                        <i class="ti ti-category-2"></i>
+                      </span>
+                            <span class="hide-menu">Product/Project Category</span>
+                        </a>
+                    </li>
 
-{{--                    <li class="sidebar-item">--}}
-{{--                        <a class="sidebar-link" href="{{route('admin-products.index')}}" aria-expanded="false">--}}
-{{--                  <span>--}}
-{{--                    <i class="ti ti-brand-producthunt"></i>--}}
-{{--                  </span>--}}
-{{--                            <span class="hide-menu">Products</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-products.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-brand-producthunt"></i>
+                  </span>
+                            <span class="hide-menu">Product/Project</span>
+                        </a>
+                    </li>
 
 {{--                    <li class="sidebar-item">--}}
 {{--                        <a class="sidebar-link" href="{{route('admin-coupons.index')}}" aria-expanded="false">--}}

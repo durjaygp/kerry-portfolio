@@ -42,25 +42,25 @@
                         @csrf
 
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-8">
                                 <div class="mb-4">
                                     <label for="blog_title" class="form-label fw-semibold">Product Name</label>
                                     <input type="text" name="name" class="form-control" id="blog_title" placeholder="Product Name" required>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="mb-4">
-                                    <label for="blog_title" class="form-label fw-semibold">Product Price</label>
-                                    <input type="number" name="price" class="form-control" id="blog_title" placeholder="Product Price" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
+{{--                            <div class="col-lg-6">--}}
+{{--                                <div class="mb-4">--}}
+{{--                                    <label for="blog_title" class="form-label fw-semibold">Product Price</label>--}}
+{{--                                    <input type="number" name="price" class="form-control" id="blog_title" placeholder="Product Price" required>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label for="exampleInputPassword1" class="form-label fw-semibold">Product Category</label>
                                     @php
                                         $categories = \App\Models\ProductCategory::latest()->get();
                                     @endphp
-                                    <select name="product_category_id" id="" class="form-control" required>
+                                    <select name="product_category_id" id="" class="form-select" required>
                                         <option>Select Category</option>
                                         @foreach($categories as $row)
                                             <option value="{{$row->id}}" >{{$row->name}}</option>
