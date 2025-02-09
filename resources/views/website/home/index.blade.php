@@ -295,7 +295,7 @@
                                         <h5 class="mb-0 fw-bold"><a href="javascript:void(0)" class="text-body">{{$row->name}}</a></h5>
                                     </div>
                                     <div class="mt-3">
-                                        <p class="mb-0 h6 text-muted date_blog">11 March 2018 <a href="javascript:void(0)" class="text-primary fw-bold">By
+                                        <p class="mb-0 h6 text-muted date_blog">{{$row->created_at->format('d M Y')}} <a href="javascript:void(0)" class="text-primary fw-bold">By
                                             {{$row->user->name}}</a></p>
                                         <p class="mt-3 desc_blog text-muted">{{\Illuminate\Support\Str::limit($row->description,110)}}</p>
                                         <p class="mb-0 h6"><a href="javascript:void(0)" class="text-muted fw-bold">Read More...</a></p>
