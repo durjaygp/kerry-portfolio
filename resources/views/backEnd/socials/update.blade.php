@@ -44,6 +44,12 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
+                                    <label for="linkedin" class="form-label fw-semibold">Linkedin Link</label>
+                                    <input type="url" name="linkedin" class="form-control" id="linkedin" placeholder="Example: https://www.facebook.com/" value="{{$social->linkedin}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-4">
                                     <label for="whatsappLink" class="form-label fw-semibold">WhatsApp Link</label>
                                     <input type="url" name="whatsapp" class="form-control" id="whatsappLink" placeholder="Example: https://wa.me/1234567890" value="{{$social->whatsapp}}">
                                 </div>

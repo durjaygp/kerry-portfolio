@@ -119,25 +119,25 @@
 
 
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('admin-faq.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-bell-question"></i>
-                  </span>
-                            <span class="hide-menu">FAQ</span>
-                        </a>
-                    </li>
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('admin-faq.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-bell-question"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">FAQ</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
-                    @can('page-list')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('new-page.index')}}">
-                      <span>
-                        <i class="ti ti-new-section"></i>
-                      </span>
-                                <span class="hide-menu">Pages</span>
-                            </a>
-                        </li>
-                    @endcan
+{{--                    @can('page-list')--}}
+{{--                        <li class="sidebar-item">--}}
+{{--                            <a class="sidebar-link" href="{{route('new-page.index')}}">--}}
+{{--                      <span>--}}
+{{--                        <i class="ti ti-new-section"></i>--}}
+{{--                      </span>--}}
+{{--                                <span class="hide-menu">Pages</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endcan--}}
 
 
                     @can('social-list')
@@ -259,14 +259,14 @@
                             </a>
                         </li>
                     @endcan
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('page.homeAbout')}}">
-                      <span>
-                        <i class="ti ti-user-bolt"></i>
-                      </span>
-                            <span class="hide-menu">About Section</span>
-                        </a>
-                    </li>
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('page.homeAbout')}}">--}}
+{{--                      <span>--}}
+{{--                        <i class="ti ti-user-bolt"></i>--}}
+{{--                      </span>--}}
+{{--                            <span class="hide-menu">About Section</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                     @can('subscriber-list')
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{route('newsletters.index')}}">

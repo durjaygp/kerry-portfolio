@@ -33,6 +33,7 @@ class SocialMediaLinksController extends Controller
         $validated = $request->validate([
             'facebook' => 'nullable',
             'whatsapp' => 'nullable',
+            'linkedin' => 'nullable',
             'youtube' => 'nullable',
             'instagram' => 'nullable',
             'tiktok' => 'nullable',

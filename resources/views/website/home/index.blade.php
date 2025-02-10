@@ -59,6 +59,7 @@
                                         $socialPlatforms = [
                                             'facebook' => 'mdi mdi-facebook',
                                             'whatsapp' => 'mdi mdi-whatsapp',
+                                                'linkedin' => 'mdi mdi-linkedin',
                                             'youtube' => 'mdi mdi-youtube-play',
                                             'instagram' => 'mdi mdi-instagram',
                                             'tiktok' => asset('tiktok.png'), // Store full image path
@@ -79,12 +80,7 @@
                                                         <i class="{{ $icon }}"></i>
                                                     @endif
                                                 </a>
-                                            @else
-                                                @if ($platform === 'tiktok')
-                                                    <img src="{{ $icon }}" alt="TikTok" style="width: 24px; height: 24px;">
-                                                @else
-                                                    <i class="{{ $icon }}"></i>
-                                                @endif
+
                                             @endif
                                         </li>
                                     @endforeach
