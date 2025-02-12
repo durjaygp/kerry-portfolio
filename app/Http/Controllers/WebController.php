@@ -7,6 +7,7 @@ use App\Models\AffiliateProduct;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\CustomReview;
+use App\Models\Education;
 use App\Models\Faq;
 use App\Models\HomepageSetting;
 use App\Models\NewPages;
@@ -31,6 +32,7 @@ class WebController extends Controller
 
         $latestBlogs = Blog::with('user')->select('id', 'name','slug','description','image', 'created_at','user_id')->latest()->whereStatus(1)->take(3)->get();
         $services = Service::select('id', 'title', 'icon', 'slug','description')->latest()->whereStatus(1)->get();
+        $educations = Education::latest()->get();
         $about = About::find(1);
         $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
         $homepage = HomepageSetting::find(1);
@@ -39,7 +41,7 @@ class WebController extends Controller
         $setting = setting();
         $projectCategory = ProductCategory::latest()->whereStatus(1)->get();
         $projects = Product::with('productCategory')->select('id', 'name','slug','image','product_category_id')->latest()->whereStatus(1)->get();
-        return view('website.home.index',data: compact('projects','projectCategory','social','faqs','latestBlogs','services','about','reviews','homepage','setting'));
+        return view('website.home.index',data: compact('educations','projects','projectCategory','social','faqs','latestBlogs','services','about','reviews','homepage','setting'));
     }
 
 //    public function index()

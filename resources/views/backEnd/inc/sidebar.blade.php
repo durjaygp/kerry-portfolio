@@ -62,6 +62,14 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('admin-education.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-school"></i>
+                  </span>
+                            <span class="hide-menu">Education</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('admin-service.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-world-code"></i>
@@ -174,37 +182,37 @@
 {{--                    </li>--}}
 {{--                    <!-- =================== -->--}}
 
-                <!-- =================== -->
-                    <!-- Recipe Intro -->
-                    <!-- =================== -->
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Blog</span>
-                        </li>
-                    <!-- =================== -->
-                    <!-- Books -->
-                    <!-- =================== -->
-                    @can('category-list')
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('category.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-category-2"></i>
-                  </span>
-                            <span class="hide-menu">Category</span>
-                        </a>
-                    </li>
-                    @endcan
-                    <!-- =================== -->
-                    @can('blog-list')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('blog.list')}}">
-                          <span>
-                            <i class="ti ti-brand-blogger"></i>
-                          </span>
-                                <span class="hide-menu">Blog</span>
-                            </a>
-                        </li>
-                    @endcan
+{{--                <!-- =================== -->--}}
+{{--                    <!-- Recipe Intro -->--}}
+{{--                    <!-- =================== -->--}}
+{{--                        <li class="nav-small-cap">--}}
+{{--                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>--}}
+{{--                            <span class="hide-menu">Blog</span>--}}
+{{--                        </li>--}}
+{{--                    <!-- =================== -->--}}
+{{--                    <!-- Books -->--}}
+{{--                    <!-- =================== -->--}}
+{{--                    @can('category-list')--}}
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('category.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-category-2"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">Category</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    @endcan--}}
+{{--                    <!-- =================== -->--}}
+{{--                    @can('blog-list')--}}
+{{--                        <li class="sidebar-item">--}}
+{{--                            <a class="sidebar-link" href="{{route('blog.list')}}">--}}
+{{--                          <span>--}}
+{{--                            <i class="ti ti-brand-blogger"></i>--}}
+{{--                          </span>--}}
+{{--                                <span class="hide-menu">Blog</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endcan--}}
 
 
 {{--                    <li class="sidebar-item">--}}
@@ -241,24 +249,24 @@
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Website</span>
                     </li>
-                    @can('role-list')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('roles-permission.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-user-shield"></i>
-                  </span>
-                                <span class="hide-menu">Roles</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('admin.user-list')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-users"></i>
-                  </span>
-                                <span class="hide-menu">Create User</span>
-                            </a>
-                        </li>
-                    @endcan
+{{--                    @can('role-list')--}}
+{{--                        <li class="sidebar-item">--}}
+{{--                            <a class="sidebar-link" href="{{route('roles-permission.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-user-shield"></i>--}}
+{{--                  </span>--}}
+{{--                                <span class="hide-menu">Roles</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="sidebar-item">--}}
+{{--                            <a class="sidebar-link" href="{{route('admin.user-list')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-users"></i>--}}
+{{--                  </span>--}}
+{{--                                <span class="hide-menu">Create User</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    @endcan--}}
 {{--                    <li class="sidebar-item">--}}
 {{--                        <a class="sidebar-link" href="{{route('page.homeAbout')}}">--}}
 {{--                      <span>--}}
@@ -267,15 +275,15 @@
 {{--                            <span class="hide-menu">About Section</span>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-                    @can('subscriber-list')
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('newsletters.index')}}">
-                      <span>
-                        <i class="ti ti-news"></i>
-                      </span>
-                                <span class="hide-menu">Subscriber</span>
-                            </a>
-                        </li>
+{{--                    @can('subscriber-list')--}}
+{{--                        <li class="sidebar-item">--}}
+{{--                            <a class="sidebar-link" href="{{route('newsletters.index')}}">--}}
+{{--                      <span>--}}
+{{--                        <i class="ti ti-news"></i>--}}
+{{--                      </span>--}}
+{{--                                <span class="hide-menu">Subscriber</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{route('contact.message')}}">
@@ -285,7 +293,7 @@
                                 <span class="hide-menu">Contact Message List</span>
                             </a>
                         </li>
-                    @endcan
+{{--                    @endcan--}}
 {{--                    <li class="sidebar-item">--}}
 {{--                        <a class="sidebar-link" href="{{route('page.homePrivacy')}}">--}}
 {{--                      <span>--}}

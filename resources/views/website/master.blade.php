@@ -6,7 +6,7 @@
 
     @yield('title_meta')
 
-    <link rel="shortcut icon"  href="{{ asset('assets') }}/images/favicon.ico">
+    <link rel="shortcut icon"  href="{{ asset(setting()->fav_icon) }}">
 
     <!-- Bootstrap Css -->
     <link id="bootstrap" rel="stylesheet" type="text/css"  href="{{ asset('assets') }}/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
 
     <!-- Magnific-popup -->
     <link rel="stylesheet" type="text/css"  href="{{ asset('assets') }}/css/magnific-popup.css">
-
+    <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
     <!-- Mobirise icons Css -->
     <link rel="stylesheet" type="text/css"  href="{{ asset('assets/css/mobiriseicons.css') }}">
 
@@ -110,10 +110,33 @@
 
     <!-- Magnific Popup Js -->
     <script  src="{{ asset('assets') }}/js/jquery.magnific-popup.min.js"></script>
-
+    <script src="{{asset('/')}}iziToast/dist/js/iziToast.min.js"></script>
     <!-- Custom Js -->
     <script  src="{{ asset('assets') }}/js/custom.js"></script>
     @yield('script')
 
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <script>
+                iziToast.error({
+                    title: '',
+                    position:'topRight',
+                    message: '{{$error}}',
+                });
+            </script>
+        @endforeach
+
+    @endif
+
+    @if(session()->get('success'))
+        <script>
+            iziToast.success({
+                title: '',
+                position:'topRight',
+                message: '{{session()->get('success')}}',
+            });
+
+        </script>
+    @endif
 </body>
 </html>

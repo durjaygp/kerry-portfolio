@@ -75,8 +75,10 @@ class HomeController extends Controller
 
         // Create the contact message
         Contact::create($messageData);
+      // return redirect()->route('home', ['#message2'])->with('success', 'Message sent successfully.');
+        return redirect()->to(url()->previous() . '#message2')->with('success', 'Message sent successfully.');
 
-        return redirect()->back()->with('success', 'Message sent successfully.');
+   //     return redirect()->back()->with('success', 'Message sent successfully.');
     }
 
 

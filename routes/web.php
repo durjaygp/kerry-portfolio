@@ -41,6 +41,7 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\CustomReviewController;
 use App\Http\Controllers\HomepageSettingController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\EducationController;
 
 
 
@@ -55,6 +56,7 @@ use Illuminate\Support\Facades\Artisan;
 
 // =============== Home Routes ===============
 Route::get('/', [WebController::class,'index'])->name('home');
+Route::get('portfolio/{slug}',[WebProductController::class,'details'])->name('home.portfolio');
 
 Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
 Route::get('/blogs', [WebController::class,'blog'])->name('home.blogs');
@@ -63,7 +65,7 @@ Route::get('/service/{slug}', [WebController::class,'serviceDetails'])->name('se
 Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
 Route::get('/page/{slug}', [WebController::class,'pageDetails'])->name('home.page');
 Route::get('products',[WebProductController::class,'index'])->name('home.products');
-Route::get('product/{slug}',[WebProductController::class,'details'])->name('home.product');
+
 Route::get('/about-us', [PageController::class,'about'])->name('home.about');
 Route::get('/contact-us', [PageController::class,'contact'])->name('home.contact');
 Route::get('/faq', [PageController::class,'faq'])->name('home.faq');
@@ -252,6 +254,7 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
 
     Route::resource('admin-service',AdminServiceController::class);
     Route::resource('admin-faq',AdminFaqController::class);
+    Route::resource('admin-education',EducationController::class);
     Route::resource('admin-slider',AdminSliderController::class);
     Route::resource('custom-review',CustomReviewController::class);
 

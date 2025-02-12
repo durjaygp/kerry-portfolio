@@ -1,10 +1,33 @@
 @extends('website.master')
 @section('title_meta')
-<title>{{ $setting->name }}</title>
-<meta name="description" content="Premium Responsive Bootstrap 5.3.3 Personal Template" />
-<meta name="keywords" content="bootstrap 5.3.3, premium, cv, personal, Portfolio, multipurpose" />
-<meta name="author" content="SRBThemes" />
-@endsection
+    @section('title_meta')
+        <title>{{ setting()->name }}</title>
+        <meta name="description" content="{{ setting()->description }}">
+        <meta name="keywords" content="{{ setting()->keywords }}">
+        <meta name="author" content="{{ setting()->author }}">
+        <meta name="robots" content="index, follow">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ setting()->name }}">
+        <meta property="og:description" content="{{ setting()->description }}">
+        <meta property="og:image" content="{{ asset(setting()->website_logo) }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:site_name" content="{{ setting()->name }}">
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ setting()->name }}">
+        <meta name="twitter:description" content="{{ setting()->description }}">
+        <meta name="twitter:image" content="{{ asset(setting()->website_logo) }}">
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ url()->current() }}">
+
+        <!-- Favicon -->
+        <link rel="icon" href="{{ asset(setting()->fav_icon ) }}" type="image/x-icon">
+    @endsection
+
 
 @section('content')
 
@@ -95,6 +118,132 @@
         </section>
         <!-- END ABOUT -->
     @endif
+
+    @if($homepage->education_section_status === "1")
+        <!-- START EDUCATION -->
+        <section class="section bg-light" id="education">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <h2><span class="fw-bold">{{$homepage->education_section_title}}</span></h2>
+                            <p class="mx-auto mt-3 text-muted section-subtitle">{{$homepage->education_section_paragraph}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 row">
+                    @foreach($educations->where('type',1)  as $row)
+                        <div class="col-lg-6">
+                            <div class="p-4 mt-4 rounded services-boxes">
+                                <h3>{{$row->title}}</h3>
+                                <h4>{{$row->institute}}</h4>
+                                <h5>{{$row->start_year}}-{{$row->end_year}}
+                                </h5>
+                                <div class="mt-4">
+
+                                    <div class="services-title-border"></div>
+                                    <p class="mt-3 text-muted">{{$row->description}}
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+        </section>
+        <!-- END EDUCATION -->
+    @endif
+
+    @if($homepage->experience_section_status === "1")
+        <!-- START Work -->
+        <section class="section bg-light" id="experience">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <h2><span class="fw-bold">{{$homepage->experience_section_title}}</span></h2>
+                            <p class="mx-auto mt-3 text-muted section-subtitle">{{$homepage->experience_section_paragraph}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 row">
+                    @foreach($educations->where('type',2) as $row)
+                        <div class="col-lg-6">
+                            <div class="p-4 mt-4 rounded services-boxes">
+                                <h3>{{$row->title}}</h3>
+                                <h4>{{$row->institute}}</h4>
+                                <h5>{{$row->start_year}}-{{$row->end_year}}
+                                </h5>
+                                <div class="mt-4">
+
+                                    <div class="services-title-border"></div>
+                                    <p class="mt-3 text-muted">{{$row->description}}
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+            </div>
+        </section>
+        <!-- END Work -->
+
+    @endif
+    @if($homepage->portfolio_section_status === "1")
+
+        <!-- START WORK -->
+        <section class="text-center section" id="portfolio">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <h2>Our <span class="fw-bold">{{$homepage->portfolio_section_title}}</span></h2>
+                            <p class="mx-auto mt-3 text-muted section-subtitle">{{$homepage->portfolio_section_paragraph}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 row ">
+                    <ul class="mb-0 col list-unstyled list-inline text-uppercase work_menu" id="menu-filter">
+                        <li class="list-inline-item"><a class="active" data-filter="*">All</a></li>
+                        @foreach($projectCategory as $category)
+                            <li class="list-inline-item">
+                                <a data-filter=".{{ Str::slug($category->name) }}">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+
+                </div>
+            </div>
+            <div class="container">
+                <div class="mt-4 row work-filter">
+                    @foreach($projects as $project)
+                        <div class="col-lg-4 work_item {{ Str::slug($project->productCategory->name) }}">
+                            <a href="{{ asset($project->image) }}" class="img-zoom">
+                                <div class="work_box">
+                                    <div class="work_img">
+                                        <img src="{{ asset($project->image) }}" class="mx-auto rounded img-fluid d-block" alt="{{ $project->title }}">
+                                    </div>
+                                    <div class="work_detail">
+                                        <p class="mb-2">{{ $project->productCategory->name }}</p>
+                                        <h4 class="mb-0"><a href="{{route('home.portfolio',$project->slug)}}">{{ $project->name }}</a></h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+        </section>
+        <!-- END WORK -->
+
+    @endif
+
+
     @if($homepage->service_section_status === "1")
         <!-- START SERVICES -->
         <section class="section bg-light" id="services">
@@ -189,52 +338,6 @@
     @endif
 
 
-    <!-- START WORK -->
-    <section class="text-center section" id="portfolio">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="text-center">
-                        <h2>Our <span class="fw-bold">Works</span></h2>
-                        <p class="mx-auto mt-3 text-muted section-subtitle">It is a long established fact that a reader will be of a page when established fact looking at its layout.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-5 row ">
-                <ul class="mb-0 col list-unstyled list-inline text-uppercase work_menu" id="menu-filter">
-                    <li class="list-inline-item"><a class="active" data-filter="*">All</a></li>
-                    @foreach($projectCategory as $category)
-                        <li class="list-inline-item">
-                            <a data-filter=".{{ Str::slug($category->name) }}">{{ $category->name }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-
-            </div>
-        </div>
-        <div class="container">
-            <div class="mt-4 row work-filter">
-                @foreach($projects as $project)
-                    <div class="col-lg-4 work_item {{ Str::slug($project->productCategory->name) }}">
-                        <a href="{{ asset($project->image) }}" class="img-zoom">
-                            <div class="work_box">
-                                <div class="work_img">
-                                    <img src="{{ asset($project->image) }}" class="mx-auto rounded img-fluid d-block" alt="{{ $project->title }}">
-                                </div>
-                                <div class="work_detail">
-                                    <p class="mb-2">{{ $project->productCategory->name }}</p>
-                                    <h4 class="mb-0">{{ $project->name }}</h4>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-    </section>
-    <!-- END WORK -->
-
     @if($homepage->blog_section_status == "1")
         <!-- START BLOG -->
         <section class="section bg-light" id="blog">
@@ -324,7 +427,21 @@
                 <div class="mt-5 row">
                     <div class="col-lg-12">
                         <div class="form-kerri contact_form">
-                            <div id="message"></div>
+                            <div id="message2"></div>
+                            @if(session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Success!</strong> {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if(session('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>Error!</strong> {{ session('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+
                             <form method="post" action="{{route('contact.save')}}" name="contact-form">
                                 @csrf
                                 <div class="row">
