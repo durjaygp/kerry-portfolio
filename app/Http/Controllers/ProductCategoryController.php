@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -74,8 +75,14 @@ class ProductCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy($id)
     {
-        //
+        $category = ProductCategory::find($id);
+        if (!$category) {
+            return redirect()->back()->with('error', 'Category not found.');
+        }
+
+        $category->delete();
+        return redirect()->back()->with('success', 'Project Category has been deleted.');
     }
 }

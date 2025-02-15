@@ -72,7 +72,7 @@
                                                     <a href="{{route('admin-product-category.edit',$row->id)}}" class="btn btn-sm btn-primary">
                                                         <i class="ti ti-pencil fs-5"></i>
                                                     </a>
-                                                    <a href="{{ route('category.delete', $row->id) }}"
+                                                    <a href="{{ route('admin-product-category.destroy', $row->id) }}"
                                                        onclick="event.preventDefault();
                                                            if (confirm('Are you sure you want to delete?'))
                                                            document.getElementById('delete-form-{{ $row->id }}').submit();"
@@ -80,7 +80,7 @@
                                                         <i class="ti ti-trash fs-5"></i>
                                                     </a>
 
-                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('category.delete', $row->id) }}" method="get" style="display: none;">
+                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('admin-product-category.destroy', $row->id) }}" method="get" style="display: none;">
                                                         @csrf
                                                     </form>
 

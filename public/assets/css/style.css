@@ -1013,12 +1013,7 @@ ul.pattern .color6 {
   color: #ababab;
 }
 
-.header-bg-img {
-  background-image: url(../images/header-bg.jpg);
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-}
+
 
 .header-content {
   max-width: 800px;

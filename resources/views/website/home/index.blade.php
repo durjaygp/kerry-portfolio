@@ -34,6 +34,14 @@
     <!-- Start All Cards -->
     @if($homepage->hero_section_status == "1")
         <!-- START HOME -->
+        <style>
+            .header-bg-img {
+                background-image: url({{asset($homepage->hero_section_background_image)}});
+                position: relative;
+                background-size: cover;
+                background-position: center center;
+            }
+        </style>
         <section class="section header-bg-img h-100vh align-items-center d-flex" id="home">
             <div class="bg-overlay"></div>
             <div class="container z-2">
