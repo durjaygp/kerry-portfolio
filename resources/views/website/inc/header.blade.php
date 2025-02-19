@@ -1,6 +1,6 @@
 <nav class="sticky navbar navbar-expand-lg custom-nav navbar-light fixed-top">
     <div class="container">
-        <a class="pt-0 navbar-brand logo" href="#">
+        <a class="pt-0 navbar-brand logo" href="{{route('home')}}">
             <img  src="{{ asset(setting()->website_logo) }}" alt="{{setting()->name}}" class="img-fluid logo-light">
             <img  src="{{ asset(setting()->website_logo) }}" alt="{{setting()->name}}" class="img-fluid logo-dark">
         </a>

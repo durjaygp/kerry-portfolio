@@ -74,15 +74,17 @@
                                                     </a>
                                                     <a href="{{ route('admin-product-category.destroy', $row->id) }}"
                                                        onclick="event.preventDefault();
-                                                           if (confirm('Are you sure you want to delete?'))
-                                                           document.getElementById('delete-form-{{ $row->id }}').submit();"
+       if (confirm('Are you sure you want to delete?'))
+           document.getElementById('delete-form-{{ $row->id }}').submit();"
                                                        class="btn btn-sm btn-danger text-white delete ms-2">
                                                         <i class="ti ti-trash fs-5"></i>
                                                     </a>
 
-                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('admin-product-category.destroy', $row->id) }}" method="get" style="display: none;">
+                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('admin-product-category.destroy', $row->id) }}" method="POST" style="display: none;">
                                                         @csrf
+                                                        @method('DELETE')
                                                     </form>
+
 
                                                 </div>
                                             </td>

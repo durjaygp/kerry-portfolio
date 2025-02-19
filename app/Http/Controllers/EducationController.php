@@ -34,7 +34,7 @@ class EducationController extends Controller
             'start_year' => 'required',
             'end_year' => 'required',
             'institute' => 'required',
-            'description' => 'required',
+           // 'description' => 'required',
         ]);
 
         $data = $request->all();
@@ -69,7 +69,7 @@ class EducationController extends Controller
             'start_year' => 'required',
             'end_year' => 'required',
             'institute' => 'required',
-            'description' => 'required',
+          //  'description' => 'required',
         ]);
 
         $data = $request->all();

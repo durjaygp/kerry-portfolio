@@ -40,6 +40,7 @@ class SocialMediaLinksController extends Controller
             'telegram' => 'nullable',
             'snapchat' => 'nullable',
             'twitter' => 'nullable',
+            'flickr' => 'nullable',
             'pinterest' => 'nullable',
         ]);
 

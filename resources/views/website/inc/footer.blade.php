@@ -13,10 +13,11 @@
                             $socialPlatforms = [
                                 'facebook' => 'mdi mdi-facebook',
                                 'whatsapp' => 'mdi mdi-whatsapp',
-                                'linkedin' => 'mdi mdi-linkedin',
+                                    'linkedin' => 'mdi mdi-linkedin',
                                 'youtube' => 'mdi mdi-youtube-play',
                                 'instagram' => 'mdi mdi-instagram',
                                 'tiktok' => asset('tiktok.png'), // Store full image path
+                                'flickr' => asset('flickr.png'), // Store full image path
                                 'telegram' => 'mdi mdi-telegram',
                                 'snapchat' => 'mdi mdi-snapchat',
                                 'twitter' => 'mdi mdi-twitter',
@@ -30,20 +31,19 @@
                                     <a href="{{ $social->$platform }}" target="_blank">
                                         @if ($platform === 'tiktok')
                                             <img src="{{ $icon }}" alt="TikTok" style="width: 24px; height: 24px;">
+                                        @elseif ($platform === 'flickr')
+                                            <img src="{{ $icon }}" alt="flickr" style="width: 24px; height: 24px;">
                                         @else
                                             <i class="{{ $icon }}"></i>
                                         @endif
                                     </a>
-
 
                                 @endif
                             </li>
                         @endforeach
                     </ul>
                     <p class="mt-3 mb-0 copyright_content">
-                        <script>document.write(new Date().getFullYear())</script>
                         {{$setting->footer}}
-
                     </p>
                 </div>
             </div>

@@ -40,7 +40,7 @@ class WebController extends Controller
         $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
         $setting = setting();
         $projectCategory = ProductCategory::latest()->whereStatus(1)->get();
-        $projects = Product::with('productCategory')->select('id', 'name','slug','image','product_category_id')->latest()->whereStatus(1)->get();
+        $projects = Product::with('productCategory')->select('id', 'name','slug','image','product_category_id','url')->latest()->whereStatus(1)->get();
         return view('website.home.index',data: compact('educations','projects','projectCategory','social','faqs','latestBlogs','services','about','reviews','homepage','setting'));
     }
 

@@ -33,7 +33,6 @@
 
     <!-- Start All Cards -->
     @if($homepage->hero_section_status == "1")
-        <!-- START HOME -->
         <style>
             .header-bg-img {
                 background-image: url({{asset($homepage->hero_section_background_image)}});
@@ -42,6 +41,7 @@
                 background-position: center center;
             }
         </style>
+        <!-- START HOME -->
         <section class="section header-bg-img h-100vh align-items-center d-flex" id="home">
             <div class="bg-overlay"></div>
             <div class="container z-2">
@@ -50,7 +50,7 @@
                         <div class="mx-auto text-center header-content">
                             <img src="{{asset($homepage->hero_section_image )}}" alt="" class="rounded w-25">
                             <h4 class="mt-1 mb-2 text-white first-title">Welcome</h4>
-                            <h1 class="mb-0 text-white header-name text-capitalize">I'M <span class="element fw-bold"></span></h1>
+                            <h1 class="mb-0 text-white header-name text-capitalize">I'm <span class="element fw-bold"></span></h1>
                             <p class="mx-auto mt-4 text-white header-desc">{!! $homepage->hero_section_paragraph  !!}</p>
                             <div class="pt-2 mt-4">
                                 <a href="{{$homepage->hero_section_button_link}}" target="_blank" class="btn btn-outline-white rounded-pill">{{$homepage->hero_section_button_text}}</a>
@@ -80,7 +80,7 @@
                     <div class="col-lg-6">
                         <div class="mt-3">
                             <h2><span class="fw-bold">{{$homepage->about_section_title }}</span></h2>
-                            <h4 class="mt-4">Hello! <span class="text-primary fw-bold">I'M {{$homepage->about_section_header}}</span></h4>
+                            <h4 class="mt-4">Hello! <span class="text-primary fw-bold">I'm {{$homepage->about_section_header}}</span></h4>
                             <p class="mt-4 text-muted">{{$homepage->about_section_paragraph}} </p>
 
 
@@ -94,6 +94,7 @@
                                             'youtube' => 'mdi mdi-youtube-play',
                                             'instagram' => 'mdi mdi-instagram',
                                             'tiktok' => asset('tiktok.png'), // Store full image path
+                                            'flickr' => asset('flickr.png'), // Store full image path
                                             'telegram' => 'mdi mdi-telegram',
                                             'snapchat' => 'mdi mdi-snapchat',
                                             'twitter' => 'mdi mdi-twitter',
@@ -107,6 +108,8 @@
                                                 <a href="{{ $social->$platform }}" target="_blank">
                                                     @if ($platform === 'tiktok')
                                                         <img src="{{ $icon }}" alt="TikTok" style="width: 24px; height: 24px;">
+                                                    @elseif ($platform === 'flickr')
+                                                        <img src="{{ $icon }}" alt="flickr" style="width: 24px; height: 24px;">
                                                     @else
                                                         <i class="{{ $icon }}"></i>
                                                     @endif
@@ -209,7 +212,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="text-center">
-                            <h2>Our <span class="fw-bold">{{$homepage->portfolio_section_title}}</span></h2>
+                            <h2> <span class="fw-bold">{{$homepage->portfolio_section_title}}</span></h2>
                             <p class="mx-auto mt-3 text-muted section-subtitle">{{$homepage->portfolio_section_paragraph}}</p>
                         </div>
                     </div>
@@ -237,7 +240,12 @@
                                     </div>
                                     <div class="work_detail">
                                         <p class="mb-2">{{ $project->productCategory->name }}</p>
-                                        <h4 class="mb-0"><a href="{{route('home.portfolio',$project->slug)}}">{{ $project->name }}</a></h4>
+                                        <h4 class="mb-0">
+                                            <a target="_blank" href="{{ $project->url ?? route('home.portfolio', ['id' => $project->id, 'slug' => $project->slug]) }}">
+                                                {{ $project->name }}
+                                            </a>
+                                        </h4>
+
                                     </div>
                                 </div>
                             </a>
@@ -435,8 +443,8 @@
                 <div class="mt-5 row">
                     <div class="col-lg-12">
                         <div class="form-kerri contact_form">
-                            <div id="message2"></div>
-                            @if(session('success'))
+                            <div id="message"></div>
+                              @if(session('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>Success!</strong> {{ session('success') }}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -449,7 +457,6 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             @endif
-
                             <form method="post" action="{{route('contact.save')}}" name="contact-form">
                                 @csrf
                                 <div class="row">
@@ -476,18 +483,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="mathgroup">Please solve the following math function: {{ app('mathcaptcha')->label() }}</label>
-                                    {!! app('mathcaptcha')->input(['class' => 'form-control', 'id' => 'mathgroup']) !!}
-                                    @if ($errors->has('mathcaptcha'))
-                                        <span class="help-block">
-            <strong>{{ $errors->first('mathcaptcha') }}</strong>
-        </span>
-                                    @endif
-                                </div>
+
                                 <div class="row">
                                     <div class="mt-2 col-lg-12 text-end">
-                                        <button type="submit" id="submit" class="submitBnt btn btn-primary">Send Massage</button>
+                                        <button type="submit" id="submit" class="submitBnt btn btn-primary">Send Message</button>
                                         <div id="simple-msg"></div>
                                     </div>
                                 </div>

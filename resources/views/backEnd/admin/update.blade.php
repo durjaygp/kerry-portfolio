@@ -94,7 +94,7 @@
 
                             <div class="col-lg-12">
                                 <div class="mb-4">
-                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Confirm Password</label>
+                                    <label for="exampleInputPassword1" class="form-label fw-semibold">Confirm New Password</label>
                                     <input type="password" name="password_confirmation" class="form-control" id="exampleInputtext">
                                 </div>
                             </div>

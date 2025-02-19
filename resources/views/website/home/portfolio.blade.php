@@ -28,6 +28,12 @@
 @endsection
 
 @section('content')
+    <style>
+        #main_nav .nav-link {
+            color: black!important;
+        }
+
+    </style>
     <!-- START ABOUT -->
     <section class="section">
         <div class="container">

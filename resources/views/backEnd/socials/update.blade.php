@@ -50,6 +50,12 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="mb-4">
+                                    <label for="flickr" class="form-label fw-semibold">flickr Link</label>
+                                    <input type="url" name="flickr" class="form-control" id="flickr" placeholder="Example: https://www.flickr.com/" value="{{$social->flickr}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="mb-4">
                                     <label for="whatsappLink" class="form-label fw-semibold">WhatsApp Link</label>
                                     <input type="url" name="whatsapp" class="form-control" id="whatsappLink" placeholder="Example: https://wa.me/1234567890" value="{{$social->whatsapp}}">
                                 </div>

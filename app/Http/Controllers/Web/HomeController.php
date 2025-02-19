@@ -49,17 +49,9 @@ class HomeController extends Controller
             'email' => 'required|email',
             'subject' => 'required',
             'description' => 'required|max:500',
-            'honeypot' => 'nullable',
-            'mathcaptcha' => 'required|mathcaptcha',
-        ], [
-            'mathcaptcha.required' => 'Please solve the math question.',
-            'mathcaptcha.mathcaptcha' => 'The math captcha answer is incorrect.',
+
         ]);
 
-        // Check if the honeypot field is filled
-        if (!empty($request->honeypot)) {
-            return redirect()->back()->withErrors(['honeypot' => 'Spam detected.']);
-        }
 
         // Fetch spam keywords from the database
         $settings = setting(); // Assuming a `setting()` helper function or use your model directly
@@ -75,10 +67,8 @@ class HomeController extends Controller
 
         // Create the contact message
         Contact::create($messageData);
-      // return redirect()->route('home', ['#message2'])->with('success', 'Message sent successfully.');
-        return redirect()->to(url()->previous() . '#message2')->with('success', 'Message sent successfully.');
 
-   //     return redirect()->back()->with('success', 'Message sent successfully.');
+        return redirect()->back()->with('success', 'Message sent successfully.');
     }
 
 

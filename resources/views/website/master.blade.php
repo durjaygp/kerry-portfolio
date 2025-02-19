@@ -83,10 +83,16 @@
                 <a href="#" class="settings"><i class="mdi mdi-palette"></i></a>
             </div>
         </div>
+        <style>
+            #theme_Rtl_Ltr {
+                visibility: hidden;
 
-        <button type="button" class="border-0 dark-light-btn rounded-0 rounded-end-2 fs-5 d-flex align-items-center justify-content-center" id="dataTheme"><i class="mdi mdi-weather-night"></i> <i class="mdi mdi-weather-sunny"></i></button>
+            }
+        </style>
 
-{{--        <button type="button" class=" border-0 rtl-ltr-btn rounded-0 rounded-end-2 fs-14 d-flex align-items-center justify-content-center text-cnter" id="theme_Rtl_Ltr"></button>--}}
+        <button type="button" class="mt-1 border-0 dark-light-btn rounded-0 rounded-end-2 fs-5 d-flex align-items-center justify-content-center" id="dataTheme"><i class="mdi mdi-weather-night"></i> <i class="mdi mdi-weather-sunny"></i></button>
+
+        <button type="button" class=" border-0 rtl-ltr-btn rounded-0 rounded-end-2 fs-14 d-flex align-items-center justify-content-center text-cnter" id="theme_Rtl_Ltr"></button>
     </div>
 
     <!--All Javascript -->

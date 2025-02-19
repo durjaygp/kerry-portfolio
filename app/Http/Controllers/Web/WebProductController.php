@@ -53,7 +53,6 @@ class WebProductController extends Controller
         return view('website.product.index', compact('products'));
     }
 
-
     public function details($id,$slug){
         $port = Product::where('id',$id)->whereSlug($slug)->first();
         $relatedProducts = Product::where('product_category_id',$port->product_category_id)->whereStatus(1)->latest()->take(3)->get();

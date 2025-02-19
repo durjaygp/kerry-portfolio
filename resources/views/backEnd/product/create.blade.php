@@ -96,6 +96,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="mb-4">
+                                    <label for="url" class="form-label fw-semibold">Custom URL</label>
+                                    <input type="text" name="url" class="form-control" id="url" placeholder="url">
+                                </div>
+                            </div>
                             <hr>
                             <div class="col-lg-12">
                                 <div class="mb-4">

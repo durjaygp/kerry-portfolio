@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -79,7 +78,7 @@ class ProductCategoryController extends Controller
     {
         $category = ProductCategory::find($id);
         if (!$category) {
-            return redirect()->back()->with('error', 'Category not found.');
+            return redirect()->back()->with('error', 'Project Category not found.');
         }
 
         $category->delete();

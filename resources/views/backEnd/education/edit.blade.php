@@ -43,6 +43,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="mb-4">
+                                    <label for="type" class="form-label fw-semibold">Type</label>
+                                    <select name="type" class="form-select" required>
+                                        <option value="" disabled>Select</option>
+                                        <option value="1" {{ $education->type == 1 ? 'selected' : '' }}>Education</option>
+                                        <option value="2" {{ $education->type == 2 ? 'selected' : '' }}>Work Experience</option>
+                                    </select>
+                                    @error('type') <div class="text-danger">{{ $message }}</div> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-4">
                                     <label for="title" class="form-label fw-semibold">Title</label>
                                     <input type="text" name="title" class="form-control" placeholder="Degree or Course Title" value="{{ old('title', $education->title) }}">
                                     @error('title') <div class="text-danger">{{ $message }}</div> @enderror
@@ -76,13 +87,7 @@
                                     @error('description') <div class="text-danger">{{ $message }}</div> @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="mb-4">
-                                    <label for="extra_info" class="form-label fw-semibold">Extra Info (Optional)</label>
-                                    <input type="text" name="extra_info" class="form-control" placeholder="Any extra details" value="{{ old('extra_info', $education->extra_info) }}">
-                                    @error('extra_info') <div class="text-danger">{{ $message }}</div> @enderror
-                                </div>
-                            </div>
+
                         </div>
                         <button class="btn btn-primary">Update</button>
                     </form>
