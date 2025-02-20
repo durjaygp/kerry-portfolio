@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('seo_description')->nullable();
             $table->text('seo_keywords')->nullable();
             $table->string('status')->nullable();
+            $table->text('url')->nullable();
             $table->timestamps();
         });
     }
