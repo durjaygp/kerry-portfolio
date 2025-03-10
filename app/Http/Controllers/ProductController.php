@@ -151,6 +151,17 @@ class ProductController extends Controller
         return redirect()->route('admin-products.index')->with('success', 'Product Updated Successfully');
     }
 
+    public function editSort(Request $request, $id)
+    {
+        $request->validate(['sort_by' => 'required|numeric']);
+        $product = Product::find($id);
+        $product->sort_by = $request->sort_by;
+        $product->save();
+
+        // Redirect with success message
+        return redirect()->route('admin-products.index')->with('success', 'Sortby Updated Successfully');
+    }
+
 
     /**
      * Remove the specified resource from storage.

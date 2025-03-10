@@ -51,6 +51,7 @@
                                         <th>Name</th>
 {{--                                        <th>Price</th>--}}
                                         <th>Description</th>
+                                        <th>Sort by</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -68,6 +69,7 @@
                                         <td>{{\Illuminate\Support\Str::limit($row->name,20)}}</td>
 {{--                                        <td>$ {{ $row->price }}</td>--}}
                                         <td>{{\Illuminate\Support\Str::limit($row->description,20)}}</td>
+                                        <td>{{$row->sort_by}}</td>
                                         <td>
                                             @if($row->status == 1)
                                                 <span class="badge bg-secondary">Active</span>
