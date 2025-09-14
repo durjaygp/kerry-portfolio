@@ -1,5 +1,8 @@
 <nav class="sticky navbar navbar-expand-lg custom-nav navbar-light fixed-top">
     <div class="container">
+        @php
+            $homepage = \App\Models\HomepageSetting::first();
+        @endphp
         <a class="pt-0 navbar-brand logo" href="{{route('home')}}">
             <img  src="{{ asset(setting()->website_logo) }}" alt="{{setting()->name}}" class="img-fluid logo-light">
             <img  src="{{ asset(setting()->website_logo) }}" alt="{{setting()->name}}" class="img-fluid logo-dark">
@@ -12,21 +15,37 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/#home">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#about">About</a>
-                </li>
+
+                @if($homepage->about_section_status == "1")
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">About</a>
+                    </li>
+                @endif
+                @if($homepage->education_section_status == "1")
                 <li class="nav-item">
                     <a class="nav-link" href="/#education">Education</a>
                 </li>
+                @endif
+                @if($homepage->experience_section_status == "1")
                 <li class="nav-item">
                     <a class="nav-link" href="/#experience">Experience</a>
                 </li>
+                @endif
+                @if($homepage->portfolio_section_status == "1")
                 <li class="nav-item">
                     <a class="nav-link" href="/#portfolio">Portfolio</a>
                 </li>
+                @endif
+                @if($homepage->blog_section_status == "1")
                 <li class="nav-item">
-                    <a class="nav-link" href="/#contact">Contact</a>
+                    <a class="nav-link" href="/#blog">Blog</a>
                 </li>
+                @endif
+                @if($homepage->contact_section_status)
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#contact">Contact</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

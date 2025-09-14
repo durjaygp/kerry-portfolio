@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" data-color="red" class="data_color">
+<html dir="ltr" data-color="blue" class="data_color">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,25 +9,25 @@
     <link rel="shortcut icon"  href="{{ asset(setting()->fav_icon) }}">
 
     <!-- Bootstrap Css -->
-    <link id="bootstrap" rel="stylesheet" type="text/css"  href="{{ asset('assets') }}/css/bootstrap.min.css">
+    <link id="bootstrap" rel="stylesheet" type="text/css"  href="{{ asset('assets/css/bootstrap.min.css') }}">
 
     <!-- Materialdesign icons Css -->
-    <link rel="stylesheet" type="text/css"  href="{{ asset('assets') }}/css/materialdesignicons.min.css">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('assets/css/materialdesignicons.min.css') }}">
 
     <!-- Owl Carousel -->
-    <link rel="stylesheet" type="text/css"  href="{{ asset('assets') }}/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('assets/css/owl.carousel.min.css') }}">
 
     <!-- Animate Css -->
-    <link rel="stylesheet" type="text/css"  href="{{ asset('assets') }}/css/animate.min.css">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('assets/css/animate.min.css') }}">
 
     <!-- Magnific-popup -->
-    <link rel="stylesheet" type="text/css"  href="{{ asset('assets') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{asset('/')}}iziToast/dist/css/iziToast.min.css">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{asset('/iziToast/dist/css/iziToast.min.css')}}">
     <!-- Mobirise icons Css -->
     <link rel="stylesheet" type="text/css"  href="{{ asset('assets/css/mobiriseicons.css') }}">
 
     <!-- Custom Style -->
-    <link rel="stylesheet"  href="{{ asset('assets') }}/css/style.css">
+    <link rel="stylesheet"  href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body>

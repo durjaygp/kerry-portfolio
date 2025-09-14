@@ -29,7 +29,7 @@
                         <div class="accordion" id="homeSettingsAccordion">
                             @php
                                 $sections = [
-                                    'Hero' => ['hero_section_title', 'hero_section_paragraph', 'hero_section_button_link', 'hero_section_button_text', 'hero_section_image', 'hero_section_background_image','hero_section_all_designation_title', 'hero_section_status'],
+                                    'Hero' => ['hero_section_title', 'hero_section_paragraph', 'hero_section_button_link', 'hero_section_button_text',  'hero_section_background_image','hero_section_all_designation_title', 'hero_section_status'],
                                     'About' => ['about_section_title', 'about_section_header', 'about_section_paragraph', 'about_section_link', 'about_section_image', 'about_section_status'],
                                     'Eduction' => ['education_section_title', 'education_section_paragraph', 'education_section_status'],
                                     'Work_Experience' => ['experience_section_title', 'experience_section_paragraph', 'experience_section_status'],
@@ -38,7 +38,7 @@
                                  //   'Hire' => ['hire_section_title', 'hire_section_paragraph', 'hire_section_link', 'hire_section_button_text', 'hire_section_status'],
                                   //  'Review/Client' => ['review_section_header', 'review_section_paragraph', 'review_section_status'],
                                    // 'Faq' => ['faq_section_title', 'faq_section_header', 'faq_section_paragraph', 'faq_section_link', 'faq_section_status'],
-                                    //'Blog' => ['blog_section_title', 'blog_section_header', 'blog_section_paragraph', 'blog_section_link', 'blog_section_status'],
+                                    'Blog' => ['blog_section_title', 'blog_section_header', 'blog_section_paragraph', 'blog_section_link', 'blog_section_status'],
                                   //  'Newsletter' => ['newsletter_section_title', 'newsletter_section_header', 'newsletter_section_link', 'newsletter_section_status'],
                                     'Contact' => ['contact_section_title', 'contact_section_paragraph','contact_section_header', 'phone_title', 'phone', 'email_title', 'email','address_title', 'address', 'contact_section_link', 'contact_section_status']
                                 ];

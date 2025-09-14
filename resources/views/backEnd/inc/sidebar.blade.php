@@ -78,14 +78,14 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{route('custom-review.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-star-half"></i>
-                  </span>
-                            <span class="hide-menu">Custom Review</span>
-                        </a>
-                    </li>
+{{--                    <li class="sidebar-item">--}}
+{{--                        <a class="sidebar-link" href="{{route('custom-review.index')}}" aria-expanded="false">--}}
+{{--                  <span>--}}
+{{--                    <i class="ti ti-star-half"></i>--}}
+{{--                  </span>--}}
+{{--                            <span class="hide-menu">Custom Review</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
 
 
@@ -185,33 +185,33 @@
 {{--                <!-- =================== -->--}}
 {{--                    <!-- Recipe Intro -->--}}
 {{--                    <!-- =================== -->--}}
-{{--                        <li class="nav-small-cap">--}}
-{{--                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>--}}
-{{--                            <span class="hide-menu">Blog</span>--}}
-{{--                        </li>--}}
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Blog</span>
+                        </li>
 {{--                    <!-- =================== -->--}}
 {{--                    <!-- Books -->--}}
 {{--                    <!-- =================== -->--}}
 {{--                    @can('category-list')--}}
-{{--                    <li class="sidebar-item">--}}
-{{--                        <a class="sidebar-link" href="{{route('category.index')}}" aria-expanded="false">--}}
-{{--                  <span>--}}
-{{--                    <i class="ti ti-category-2"></i>--}}
-{{--                  </span>--}}
-{{--                            <span class="hide-menu">Category</span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('category.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-category-2"></i>
+                  </span>
+                            <span class="hide-menu">Category</span>
+                        </a>
+                    </li>
 {{--                    @endcan--}}
 {{--                    <!-- =================== -->--}}
 {{--                    @can('blog-list')--}}
-{{--                        <li class="sidebar-item">--}}
-{{--                            <a class="sidebar-link" href="{{route('blog.list')}}">--}}
-{{--                          <span>--}}
-{{--                            <i class="ti ti-brand-blogger"></i>--}}
-{{--                          </span>--}}
-{{--                                <span class="hide-menu">Blog</span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{route('blog.list')}}">
+                          <span>
+                            <i class="ti ti-brand-blogger"></i>
+                          </span>
+                                <span class="hide-menu">Blog</span>
+                            </a>
+                        </li>
 {{--                    @endcan--}}
 
 

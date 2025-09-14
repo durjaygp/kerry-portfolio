@@ -48,7 +48,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="mx-auto text-center header-content">
-                            <img src="{{asset($homepage->hero_section_image )}}" alt="" class="rounded w-25">
+{{--                            <img src="{{asset($homepage->hero_section_image )}}" alt="" class="rounded w-25">--}}
                             <h4 class="mt-1 mb-2 text-white first-title">Welcome</h4>
                             <h1 class="mb-0 text-white header-name text-capitalize">I'm <span class="element fw-bold"></span></h1>
                             <p class="mx-auto mt-4 text-white header-desc">{!! $homepage->hero_section_paragraph  !!}</p>
@@ -375,18 +375,21 @@
                                 </div>
                                 <div class="p-3 content_blog">
                                     <div>
-                                        <h5 class="mb-0 fw-bold"><a href="javascript:void(0)" class="text-body">{{$row->name}}</a></h5>
+                                        <h5 class="mb-0 fw-bold"><a href="{{route('home.blog',$row->slug)}}" class="text-body">{{$row->name}}</a></h5>
                                     </div>
                                     <div class="mt-3">
                                         <p class="mb-0 h6 text-muted date_blog">{{$row->created_at->format('d M Y')}} <a href="javascript:void(0)" class="text-primary fw-bold">By
                                             {{$row->user->name}}</a></p>
                                         <p class="mt-3 desc_blog text-muted">{{\Illuminate\Support\Str::limit($row->description,110)}}</p>
-                                        <p class="mb-0 h6"><a href="javascript:void(0)" class="text-muted fw-bold">Read More...</a></p>
+                                        <p class="mb-0 h6"><a href="{{route('home.blog',$row->slug)}}" class="text-muted fw-bold">Read More...</a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="pt-2 mt-4 text-center">
+                    <a href="{{$homepage->blog_section_link}}" target="_blank" class="btn btn-primary rounded-pill">More Blogs</a>
                 </div>
             </div>
         </section>

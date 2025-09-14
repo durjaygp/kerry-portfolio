@@ -30,18 +30,20 @@ class WebController extends Controller
     public function index(){
         app('mathcaptcha')->reset();
 
-        $latestBlogs = Blog::with('user')->select('id', 'name','slug','description','image', 'created_at','user_id')->latest()->whereStatus(1)->take(3)->get();
-        $services = Service::select('id', 'title', 'icon', 'slug','description')->latest()->whereStatus(1)->get();
+        $latestBlogs = Blog::with('user')->select(['id', 'name','slug','description','image', 'created_at','user_id'])
+            ->latest()->whereStatus(1)->take(3)->get();
+        $services = Service::select(['id', 'title', 'icon', 'slug','description'])->latest()->whereStatus(1)->get();
         $educations = Education::latest()->get();
         $about = About::find(1);
-        $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
+    //    $reviews = CustomReview::select('id', 'review','name', 'rating', 'image', 'subject')->whereStatus(1)->latest()->take(6)->get();
         $homepage = HomepageSetting::find(1);
         $social = SocialMediaLinks::find(1);
-        $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
+     //   $faqs = Faq::select('id', 'question', 'answer','status')->latest()->whereStatus(1)->take(5)->get();
         $setting = setting();
         $projectCategory = ProductCategory::latest()->whereStatus(1)->get();
-        $projects = Product::with('productCategory')->select('id', 'name','slug','image','product_category_id','url')->latest()->whereStatus(1)->get();
-        return view('website.home.index',data: compact('educations','projects','projectCategory','social','faqs','latestBlogs','services','about','reviews','homepage','setting'));
+        $projects = Product::with('productCategory')->select(['id', 'name','slug','image','product_category_id','url'])->latest()->whereStatus(1)->get();
+        return view('website.home.index',data: compact('educations','projects',
+            'projectCategory','social','latestBlogs','services','about','homepage','setting'));
     }
 
 //    public function index()
@@ -87,17 +89,18 @@ class WebController extends Controller
     }
 
     public function blog(){
-        $blogs = Blog::latest()->whereStatus(1)->with('user')->paginate(8);
-        return view('website.blog.index',compact('blogs'));
+        $blogs = Blog::latest()->whereStatus(1)->with(['user','category'])->paginate(8);
+        $homepage = HomepageSetting::first();
+        return view('website.home.blog',compact('blogs','homepage'));
     }
 
 
     public function blogDetails($slug){
-        $blog = Blog::where('slug',$slug)->firstOrFail();
-        $blogs = Blog::latest()->whereStatus(1)->whereCategoryId($blog->category_id)->take(4)->get();
+        $port = Blog::where('slug',$slug)->firstOrFail();
+        $blogs = Blog::latest()->whereStatus(1)->whereCategoryId($port->category_id)->take(4)->get();
        //$wordCount = str_word_count(strip_tags($blog->main_content));
        //$readingTime = ceil($wordCount / 200);
-        return view('website.blog.details',compact('blog','blogs'));
+        return view('website.home.details',compact('port','blogs'));
     }
 
 

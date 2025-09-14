@@ -57,9 +57,8 @@ use App\Http\Controllers\EducationController;
 // =============== Home Routes ===============
 Route::get('/', [WebController::class,'index'])->name('home');
 Route::get('portfolio/{id}/{slug}',[WebProductController::class,'details'])->name('home.portfolio');
-
+Route::get('/blog', [WebController::class,'blog'])->name('home.blogs');
 Route::get('/blog/{slug}', [WebController::class,'blogDetails'])->name('home.blog');
-Route::get('/blogs', [WebController::class,'blog'])->name('home.blogs');
 Route::get('/services', [WebController::class,'services'])->name('home.services');
 Route::get('/service/{slug}', [WebController::class,'serviceDetails'])->name('service.details');
 Route::get('/category/{slug}', [WebController::class,'category'])->name('home.category');
